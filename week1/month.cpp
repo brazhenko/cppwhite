@@ -27,8 +27,10 @@ void		add(vector<string> &todo, string deal)
 
 void		dump(const vector<string> &day)
 {
+	cout << day.size() << " ";
 	for (auto deal : day)
 		cout << deal << " ";
+	cout << endl;
 }
 
 int			main(void)
@@ -54,6 +56,16 @@ int			main(void)
 		else if (command == "NEXT")
 		{
 			current_month += 1;
+			current_month %= 12;
+			if (days_in_month[current_month] < calendar.size())
+			{
+				int first_extra_day = days_in_month[current_month] + 1;
+				int last_okay_day = first_extra_day - 1;
+				for (int i = first_extra_day; i < calendar.size(); i++)
+				{
+					calendar[last_okay_day].insert(end(calendar[last_okay_day]), begin(calendar[i]), end(calendar[i]));
+				}
+			}
 			calendar.resize(days_in_month[current_month] + 1);
 		}
 		else if (command == "DUMP")
@@ -65,6 +77,6 @@ int			main(void)
 		else if (command == "printall")
 			print_calendar(calendar);
 	}
-	print_calendar(calendar);
+	// print_calendar(calendar);
 	return (0);
 }
