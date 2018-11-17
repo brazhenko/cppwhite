@@ -33,6 +33,27 @@ void											print_buses(string stop, vector<string> &buses)
 	cout << endl;
 }
 
+void											print_stops_for_bus(string bus, vector<string> stops_of_the_bus, map<string, vector<string>> stops)
+{
+	for (auto stop : stops_of_the_bus)
+	{
+		int l = 0;
+		cout << "Stop " << stop << ":";
+		for (auto b: stops[stop])
+		{
+			if (b != bus)
+			{
+				cout << " " << b;
+				l++;
+			}
+		}
+		if (l == 0)
+			cout << " no interchange";
+
+		cout << endl;
+	}
+}
+
 void											print_stops(string stop, vector<string> &buses)
 {
 	for (auto bus : buses)
@@ -87,7 +108,7 @@ int				main(void)
 			if (buses.count(bus) == 0)
 				cout << "No bus" << endl;
 			else
-				print_buses(bus, buses[bus]);
+				print_stops_for_bus(bus, buses[bus], stops);
 
 		}
 		else if (command == "ALL_BUSES")
@@ -98,7 +119,7 @@ int				main(void)
 			{
 				for (auto b : buses)
 				{
-					print_stops(b.first, buses[b.first]);	
+					print_buses(b.first, buses[b.first]);	
 				}
 			}
 		}
