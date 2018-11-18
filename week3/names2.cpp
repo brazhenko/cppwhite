@@ -27,20 +27,24 @@ public:
 		else
 			return (history[year][0] + " " + history[year][1]);
 	}
+	string GetFullNameHistory(int year)
+	{
+	
+	}
 private:
 	map<int, map<int, string>> history;
 };
-
+/*
 int		main(void)
 {
-	 Person person;
-	   
-	     person.ChangeFirstName(1965, "Polina");
-		   person.ChangeLastName(1967, "Sergeeva");
-		     for (int year : {1900, 1965, 1990}) {
-			     cout << person.GetFullName(year) << " " << year << endl;
-				   }
+	Person person;
 	
+	person.ChangeFirstName(1965, "Polina");
+  	person.ChangeLastName(1967, "Sergeeva");
+    cout << person.GetFullName(1965) << endl;
+
+	cout << person.GetFullName(1967) << endl;
+	cout << person.GetFullName(1968) << endl;
 	return (0);
 }
-
+*/
